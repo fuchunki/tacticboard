@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+	background:black;
+	font-family:'Caveat',cursive;
+	color:white;
+	font-size:30px;
+  margin:0;
+}
+
+canvas{
+  background:white;
+  position: absolute;
+}
