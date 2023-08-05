@@ -72,6 +72,7 @@ canvas.addEventListener("mousedown",e=>{
 });
 
 canvas.addEventListener('mousemove', e => {
+  e.preventDefault();
   if(focus==nth)return;
   focus.x=e.clientX;
   focus.y=e.clientY;
