@@ -45,14 +45,6 @@ function drawBballCourt(){
   ctx.stroke();
 }
 
-
-let nth = {
-	x:0,
-	y:0,
-	draw: function(){
-	}
-}
-
 function drawAll(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   drawBballCourt();
@@ -62,25 +54,54 @@ function drawAll(){
 
 drawAll();
 
+let nth = {
+	x:0,
+	y:0,
+	draw: function(){
+	}
+}
 let focus=nth;
-
-canvas.addEventListener('mousemove', e => {
-  if(focus==nth)return;
-  focus.x=e.pageX;
-  focus.y=e.pageY;
-  drawAll();
-});
-
 
 canvas.addEventListener("mousedown",e=>{
   for(let i=0;i<objList.length;i++){
-    let Dx=objList[i].x-e.pageX;
-    let Dy=objList[i].y-e.pageY;
+    let Dx=objList[i].x-e.clientX;
+    let Dy=objList[i].y-e.clientY;
     let D=Math.sqrt(Dx*Dx+Dy*Dy);
     if(D<unit/2)focus=objList[i];
   }
 });
 
+canvas.addEventListener('mousemove', e => {
+  if(focus==nth)return;
+  focus.x=e.clientX;
+  focus.y=e.clientY;
+  drawAll();
+});
+
 canvas.addEventListener("mouseup",e=>{
       focus=nth;
 });
+
+canvas.addEventListener("touchstart", e=>{
+  let touch = e.touches[0];
+  let mouseEvent = new MouseEvent("mousedown", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+
+canvas.addEventListener("touchmove", e=>{
+  let touch = e.touches[0];
+  let mouseEvent = new MouseEvent("mousemove", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+
+canvas.addEventListener("touchend",e=>{
+    let mouseEvent = new MouseEvent("mouseup", {
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
