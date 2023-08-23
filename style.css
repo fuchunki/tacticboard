@@ -4,11 +4,12 @@ html {
 }
 
 body{
-	background:black;
-	font-family:'Caveat',cursive;
-	color:white;
-	font-size:30px;
+  background:black;
+  font-family:'Caveat',cursive;
+  color:white;
+  font-size:30px;
   margin:0;
+  overscroll-behavior: contain;
 }
 
 canvas{
