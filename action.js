@@ -84,6 +84,7 @@ canvas.addEventListener("mouseup",e=>{
 });
 
 canvas.addEventListener("touchstart", e=>{
+  e.preventDefault();
   let touch = e.touches[0];
   let mouseEvent = new MouseEvent("mousedown", {
     clientX: touch.clientX,
