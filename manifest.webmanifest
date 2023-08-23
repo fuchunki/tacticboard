@@ -1,0 +1,12 @@
+{
+  "name": "Tboard",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "",
+      "sizes": "48x48",
+      "type": "image/webp"
+    }
+  ],
+  "display": "standalone"
+}
